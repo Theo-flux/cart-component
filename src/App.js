@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import {useMediaQuery} from 'react-responsive'
+import Navbar from './components/Navbar/Navbar.js'
+import Imageslider from './components/ImageSlider/Imageslider.js'
+import DesktopImage from './components/DesktopSlider/DesktopImage.js'
+import ProductDetails from './components/ProductDetails/ProductDetails.js'
 
 function App() {
+  const isMobile = useMediaQuery({query:'(max-width:767px)'})
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <main>
+        {isMobile ? <Imageslider/>:<DesktopImage/>}
+        <ProductDetails/>
+      </main>
     </div>
   );
 }
